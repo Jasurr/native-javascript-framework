@@ -1,10 +1,30 @@
-import {WFMComponent} from "../../framework";
+import {router, WFMComponent} from "framework";
 
 class HomePageComponent extends WFMComponent {
     constructor(config) {
         super(config);
     }
+
+    events() {
+        return {
+            'click .js-link': 'goToTabs',
+        }
+    }
+
+    onInit() {
+        console.log('Component init');
+    }
+
+    afterInit() {
+        console.log('Component after init');
+    }
+
+    goToTabs(e) {
+        e.preventDefault();
+        router.navigate('tabs');
+    }
 }
+
 export const homePageComponent = new HomePageComponent({
     selector: "app-home-page",
     template: `
@@ -16,7 +36,7 @@ export const homePageComponent = new HomePageComponent({
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis, modi!</p>
                 </div>
                 <div class="card-action">
-                  <a href="#">Boshqa sahifaga o'tish</a>
+                  <a href="#" class="js-link">Boshqa sahifaga o'tish</a>
                 </div>
               </div>
             </div>

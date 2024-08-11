@@ -19,6 +19,12 @@ module.exports = {
         port: 3000
     },
 
+    resolve: {
+        alias: {
+            'framework': path.resolve(__dirname, 'src/framework'),
+        }
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Native Framework',

@@ -1,5 +1,8 @@
-import {router as routes, router} from "../tools/router";
-import {wfm} from "../tools/util";
+import {router as routes, router} from "./routing/router";
+import {_} from "../tools/util";
+import {renderComponent} from "framework/core/component/render-component";
+import {bootstrap} from "framework";
+import {RoutingModule} from "framework/core/routing/routing.module";
 
 export class Module {
     constructor(config) {
@@ -9,33 +12,22 @@ export class Module {
     }
 
     start() {
-        this.initComponents()
-        if (this.routes) this.initRoutes()
+        initComponents(this.bootstrapComponent, this.components)
+        initRouting(this.routes)
     }
 
-    initComponents() {
-        this.bootstrapComponent.render()
-        this.components.forEach(this.renderComponent.bind(this))
+}
+
+function initComponents(bootstrap, components) {
+    if (_.isUndefined(bootstrap)) {
+        throw new Error('bootstrap is defined');
     }
+    [bootstrap, ...components].forEach(renderComponent)
+}
 
-    initRoutes() {
-        window.addEventListener('hashchange', this.renderRoute.bind(this))
-        this.renderRoute()
-    }
+function initRouting(routes) {
+    if (_.isUndefined(routes)) return
 
-    renderRoute() {
-        let url = routes.getUrl()
-        let route = this.routes.find(r => r.path === url)
-
-        if (wfm.isUndefined(route)) {
-            route = this.routes.find(r => r.path === '**')
-        }
-
-        document.querySelector('route-outlet').innerHTML = `<${route.component.selector}></${route.component.selector}>`
-        this.renderComponent(route.component)
-    }
-
-    renderComponent(c) {
-        c.render()
-    }
+    let routing = new RoutingModule(routes)
+    routing.init()
 }
