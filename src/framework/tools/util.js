@@ -8,6 +8,12 @@ const _ = {
     },
     isUndefined(d) {
         return typeof d === 'undefined'
+    },
+    isNull(d) {
+        return typeof d === null
+    },
+    isString(d) {
+        return typeof d === 'string'
     }
 }
 

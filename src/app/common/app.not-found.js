@@ -10,11 +10,14 @@ class AppNotFound extends WFMComponent {
 export const notFound = new AppNotFound({
     selector: "app-not-found",
     template: `
-       <div style="display: flex; align-items: center; justify-content: center;">
+       <div class="not-found__countainer">
             <div class="red darken-1">
                 <h2>Bu sahifa topilmadi</h2>
                 <a href="#">Asosiy menuga qaytish</a>
             </div>
         </div>
+    `,
+    styles: `
+     .not-found__countainer {display: flex; align-items: center; justify-content: center;}
     `
 });

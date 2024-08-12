@@ -1,5 +1,7 @@
-import {_, router} from "framework";
-import {renderComponent} from "framework/core/component/render-component";
+import {router} from "./router.js";
+import {renderComponent} from "../component/render-component";
+import {_} from '../../tools/util'
+import {$} from '../../tools/dom'
 
 export class RoutingModule {
     constructor(routes) {
@@ -20,6 +22,6 @@ function renderRoute() {
         route = this.routes.find(r => r.path === '**')
     }
 
-    document.querySelector('route-outlet').innerHTML = `<${route.component.selector}></${route.component.selector}>`
+    $('route-outlet').html(`<${route.component.selector}></${route.component.selector}>`)
     renderComponent(route.component)
 }

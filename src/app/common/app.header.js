@@ -12,12 +12,15 @@ export const appHeader = new AppHeader({
     template: `
         <nav class="indigo">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo" style="margin-left: 20px;">Native Framework</a>
+          <a href="#" class="brand-logo logo__brand">Native Framework</a>
           <ul class="right hide-on-med-and-down">
             <li><a href="#">Asosiy</a></li>
             <li><a href="#tabs">Tablar</a></li>
           </ul>
         </div>
       </nav>
+    `,
+    styles: `
+    .logo__brand {margin-left: 20px;}
     `
 });
