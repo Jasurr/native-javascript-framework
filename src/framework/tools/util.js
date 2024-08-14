@@ -10,10 +10,13 @@ const _ = {
         return typeof d === 'undefined'
     },
     isNull(d) {
-        return typeof d === null
+        return d === null
     },
     isString(d) {
         return typeof d === 'string'
+    },
+    isEmpty(d) {
+        return d.length && d.length === 0
     }
 }
 

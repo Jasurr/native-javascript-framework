@@ -24,18 +24,18 @@ class DOMManipulator {
         if (_.isUndefined(styles)) return this.nativeElement.style
 
         Object.keys(styles).forEach((key) => {
-            this.nativeElement.style = styles[key]
+            this.nativeElement.style = `${key}:${styles[key]};`
         })
         return this
     }
 
     addClass(className) {
-        this.nativeElement.addClass(className)
+        this.nativeElement.classList.add(className)
         return this
     }
 
     removeClass(className) {
-        this.nativeElement.removeClass(className)
+        this.nativeElement.classList.remove(className)
         return this
     }
 
@@ -72,7 +72,7 @@ class DOMManipulator {
     }
 
     findAll(selector) {
-        return Array.from(this.nativeElement.querySelectorAll(selector)).map(e => $(e))
+        return Array.from(this.nativeElement.querySelectorAll(selector)).map(el => $(el))
     }
 }
 

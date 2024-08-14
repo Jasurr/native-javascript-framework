@@ -4,8 +4,9 @@ import {_} from '../../tools/util'
 import {$} from '../../tools/dom'
 
 export class RoutingModule {
-    constructor(routes) {
+    constructor(routes, dispatcher) {
         this.routes = routes;
+        this.dispatcher = dispatcher;
     }
 
     init() {
@@ -24,4 +25,6 @@ function renderRoute() {
 
     $('route-outlet').html(`<${route.component.selector}></${route.component.selector}>`)
     renderComponent(route.component)
+
+    this.dispatcher.emit('routing.change-page')
 }
