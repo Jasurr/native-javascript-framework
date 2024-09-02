@@ -17,6 +17,7 @@ export const appHeader = new AppHeader({
             <li><a href="#">Asosiy</a></li>
             <li><a href="#tabs">Tablar</a></li>
             <li><a href="#directive">Directive</a></li>
+            <li><a href="#pipe">Pipe</a></li>
           </ul>
         </div>
       </nav>
