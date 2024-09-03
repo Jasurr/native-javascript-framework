@@ -5,6 +5,7 @@ import {Pipe as WFMPipe } from "framework/core/pipes/pipe";
 import {bootstrap} from "./core/functions/bootstrap";
 import {_} from "./tools/util";
 import {$} from "./tools/dom";
+import {http} from "./tools/http";
 import {EventEmitter} from "./tools/event-emitter.js";
 import {router} from "./core/routing/router";
 
@@ -18,5 +19,6 @@ export {
     EventEmitter,
     _,
     router,
-    $
+    $,
+    http
 }
